@@ -85,6 +85,13 @@ web: php -S 0.0.0.0:4139 -t public public/index.php
 ```
 This is necessary for starting the server and allowing connections from other computers. 
 
+[Commit]((https://github.com/git-guides/git-commit)) the newly added file:
+
+```
+git add Procfile
+git commit -m "added Procfile"
+```
+
 ### Create an empty Jekyo app:
 
 `jekyo create` 
