@@ -1,0 +1,1 @@
+web: php -S 0.0.0.0:4139 -t public public/index.php
