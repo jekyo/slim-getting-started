@@ -15,7 +15,7 @@ return function (App $app) {
     });
 
     $app->get('/', function (Request $request, Response $response) {
-        $response->getBody()->write('Hello world!');
+        $response->getBody()->write('Slim app successfully deployed on Jekyo');
         return $response;
     });
 

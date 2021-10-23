@@ -1,42 +1,131 @@
-# Slim Framework 4 Skeleton Application
+# Tutorial: Deploying a basic Slim app on Jekyo
 
-[![Coverage Status](https://coveralls.io/repos/github/slimphp/Slim-Skeleton/badge.svg?branch=master)](https://coveralls.io/github/slimphp/Slim-Skeleton?branch=master)
+Demo app [here](https://slim-demo.jekyo.app/)
 
-Use this skeleton application to quickly setup and start working on a new Slim Framework 4 application. This application uses the latest Slim 4 with Slim PSR-7 implementation and PHP-DI container implementation. It also uses the Monolog logger.
+### Prerequisites
 
-This skeleton application was built for Composer. This makes setting up a new Slim Framework application quick and easy.
+Make sure you have [NodeJS](https://nodejs.org/en/download/), [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) and [git](https://github.com/git-guides/install-git) installed.
 
-## Install the Application
+If it's your first time using **Jekyo**, you can **install** it by running the following command in your terminal:
 
-Run this command from the directory in which you want to install your new Slim Framework application. You will require PHP 7.3 or newer.
+`npm install -g jekyo`
 
-```bash
-composer create-project slim/slim-skeleton [my-app-name]
+### Sign in to Jekyo
+
+You can sign in to Jekyo by running `jekyo user:signin`
+
+```
+➜  ~ jekyo user:signin 
+Your email?: **************
+Your password?: **********
+You have successfully signed in!
+```
+If you don't have a Jekyo account, you can create one in the terminal by running `jekyo user:signup`. 
+
+## 1. Create a basic Slim app
+
+You can start your Slim project by using `jekyo create`
+
+Using the **arrows** on your keyboard, select **slim** and press **enter**.  
+```
+? Select template
+  None Creates only the application
+  expressjs A basic app skeleton using [Express](https://expressjs.com/)     
+  nuxt-js A boilerplate SSR application using [Nuxt.js](https://nuxtjs.org/) 
+❯ slim A basic starter app using [Slim](https://www.slimframework.com/)
+```
+When prompted, enter the desired name for your Slim app. 
+
+`Application name?: slim-tutorial`
+
+This will create a basic Slim app in the current directory by cloning this [Slim starter app](https://github.com/jekyo/slim-getting-started) repository.
+
+```
+Cloning source code... OK
+Application created!
 ```
 
-Replace `[my-app-name]` with the desired directory name for your new application. You'll want to:
+### Deploy the Slim app on Jekyo
 
-* Point your virtual host document root to your new application's `public/` directory.
-* Ensure `logs/` is web writable.
+To deploy the app, first navigate to the newly created directory:
 
-To run the application in development, you can run these commands 
+`cd slim-tutorial`
 
-```bash
-cd [my-app-name]
-composer start
+Now you can deploy this app to Jekyo by running: 
+
+`jekyo deploy`
+
+After a while, you should see something like this:
+
+```
+➜  Fetching source code ... OK
+➜  Building application, this might take a while ... OK
+➜  Publishing application, this might take a while  ... OK
+➜  Deploying application ... OK        
+➜  Waiting for application to start ... OK
+➜  Visit your app on: https://slim-tutorial.jekyo.app ... OK
 ```
 
-Or you can use `docker-compose` to run the app with `docker`, so you can run these commands:
-```bash
-cd [my-app-name]
-docker-compose up -d
+You can now browse to your Slim app on https://slim-tutorial.jekyo.app (replace 'slim-tutorial' with your app name)
+
+## 2. Deploying an existing Slim app
+
+Navigate to your local Slim app directory
+
+`cd my-slim-app`
+
+Initialize a git repository if you haven't already done so by running `git init`. 
+
+### Create an empty Jekyo app:
+
+`jekyo create` 
+
+Select 'none' using the **arrows** on your keyboard and press **enter**. This will create an app using your current directory. 
+
 ```
-After that, open `http://localhost:8080` in your browser.
-
-Run this command in the application directory to run the test suite
-
-```bash
-composer test
+? Select template (Use arrow keys)
+❯ None Creates an application from your current directory
 ```
 
-That's it! Now go build something cool.
+Name your app: 
+
+`Application name?: my-slim-app`
+
+Run `jekyo link` to link your local app to the remote Jekyo app. Select 'my-slim-app' using the **arrows** on your keyboard and press **enter**.
+
+```
+? Select application (Use arrow keys)
+❯ my-slim-app
+```
+### Now you can deploy this app to Jekyo by running: 
+
+`jekyo deploy`
+
+After a while, you should see something like this:
+
+```
+➜  Fetching source code ... OK
+➜  Building application, this might take a while ... OK
+➜  Publishing application, this might take a while  ... OK
+➜  Deploying application ... OK        
+➜  Waiting for application to start ... OK
+➜  Visit your app on: https://my-slim-app.jekyo.app ... OK
+```
+
+You can now browse to your Slim app on https://my-slim-app.jekyo.app (replace 'my-slim-app' with your app name)
+
+## Pushing local changes to Jekyo 
+
+Add the newly modified file(s) to the git index by using [git add](https://www.atlassian.com/git/tutorials/saving-changes)
+
+`git add filename`
+
+Create a [git commit](https://github.com/git-guides/git-commit)
+
+`git commit -m "your commit message"`
+
+Now, simply deploy your app again:
+
+`jekyo deploy`
+
+You will see your changes on your live app after a short while. 
