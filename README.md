@@ -76,6 +76,15 @@ Navigate to your local Slim app directory
 
 Initialize a git repository if you haven't already done so by running `git init`. 
 
+### Create a Procfile
+
+In your app's root folder, make a file named **Procfile** (no extension) and add the following line:
+
+```
+web: php -S 0.0.0.0:4139 -t public public/index.php
+```
+This is necessary for starting the server and allowing connections from other computers. 
+
 ### Create an empty Jekyo app:
 
 `jekyo create` 
